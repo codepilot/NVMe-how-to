@@ -1,4 +1,4 @@
-const DriverLoad = require('DriverJS');
+const DriverLoad = require('JSKernelDriver');
 const {PCIe} = require('./PCIe.js');
 const {NVMe} = require('./NVMe.js');
 const Driver = DriverLoad.createDriver();
