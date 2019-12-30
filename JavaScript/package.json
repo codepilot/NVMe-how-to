@@ -1,0 +1,23 @@
+{
+  "name": "nvme-how-to",
+  "version": "0.0.3",
+  "description": "JavaScript",
+  "main": "test.js",
+  "dependencies": {
+    "JSKernelDriver": "^0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codepilot/NVMe-how-to.git"
+  },
+  "author": "Daniel Kluss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codepilot/NVMe-how-to/issues"
+  },
+  "homepage": "https://github.com/codepilot/NVMe-how-to#readme"
+}
