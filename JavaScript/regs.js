@@ -54,7 +54,12 @@ const subregs = {
     AMS:    {area: [18n,17n], RO, mapping: bitsetMapping,         units: 'bool',     desc: 'Arbitration Mechanism Supported (AMS)'},
     CQR:    {area: 16n,       RO, mapping: booleanMapping,        units: 'bool',     desc: 'Contiguous Queues Required (CQR)'},
     MQES:   {area: [15n,0n],  RO, mapping: zerosBasedMapping,     units: 'quantity', desc: 'Maximum Queue Entries Supported (MQES)'},
-  }
+  },
+  VS: {
+    MJR:    {area: [31n,16n], RO, mapping: identityMapping,       units: 'version',  desc: 'Major Version Number (MJR)'},
+    MNR:    {area: [15n,8n],  RO, mapping: identityMapping,       units: 'version',  desc: 'Minor Version Number (MNR)'},
+    TER:    {area: [7n,0n],   RO, mapping: identityMapping,       units: 'version',  desc: 'Tertiary Version Number (TER)'},
+  },
 };
 
 Object.assign(module.exports, {

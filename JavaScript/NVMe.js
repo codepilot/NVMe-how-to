@@ -21,8 +21,8 @@ module.exports.NVMe = class NVMe {
         const ui32Index = Number(start >> 2n);
         const buf = this.bar01_ui32.slice(ui32Index, ui32Index + 1);
         Object.defineProperty(registers, k, {
-          get: ()=> buf[0],
-          set: (v)=> buf[0] = v,
+          get: ()=> BigInt(buf[0]),
+          set: (v)=> buf[0] = Number(v),
           enumerable: true,
         });
       }
@@ -56,13 +56,16 @@ module.exports.NVMe = class NVMe {
     const submission = [];
     const completion = [];
 
-    for(let y = 0n; y < 65536n; y++) {
-      const submission_offset = 0x1000n + (2n * y) * registers.DSTRD;
-      const completion_offset = submission_offset + registers.DSTRD;
-      const submission_ui32Index = Number(submission_offset >> 2n);
-      const completion_ui32Index = Number(completion_offset >> 2n);
-      submission[y] = this.bar01_ui32.slice(submission_ui32Index, submission_ui32Index + 1);
-      completion[y] = this.bar01_ui32.slice(completion_ui32Index, completion_ui32Index + 1);
+    {
+      const cached_DSTRD = registers.DSTRD;
+      for(let y = 0n; y < 65536n; y++) {
+        const submission_offset = 0x1000n + (2n * y) * cached_DSTRD;
+        const completion_offset = submission_offset + cached_DSTRD;
+        const submission_ui32Index = Number(submission_offset >> 2n);
+        const completion_ui32Index = Number(completion_offset >> 2n);
+        submission[y] = this.bar01_ui32.slice(submission_ui32Index, submission_ui32Index + 1);
+        completion[y] = this.bar01_ui32.slice(completion_ui32Index, completion_ui32Index + 1);
+      }
     }
 
     Object.freeze(submission);
