@@ -81,43 +81,4 @@ module.exports.NVMe = class NVMe {
     console.log(readAll(registers));
 
   }
-  get MQES() { return this.PCIeDev.Bar01.getUint16(0, true); }
-
-
-  //Start End Symbol Description
-  get CAP() { return this.bar01_ui64[0]; } // (ui64[0]) 0h 7h CAP Controller Capabilities
-  // 8h Bh VS Version
-  // Ch Fh INTMS Interrupt Mask Set
-  // 10h 13h INTMC Interrupt Mask Clear
-  // 14h 17h CC Controller Configuration
-  // 18h 1Bh Reserved Reserved
-  // 1Ch 1Fh CSTS Controller Status
-  // 20h 23h NSSR NVM Subsystem Reset (Optional)
-  // 24h 27h AQA Admin Queue Attributes
-  get ASQ() { return this.bar01_ui64[0x5]; } // 28h 2Fh ASQ Admin Submission Queue Base Address
-  get ACQ() { return this.bar01_ui64[0x6]; } // 30h 37h ACQ Admin Completion Queue Base Address
-  // 38h 3Bh CMBLOC Controller Memory Buffer Location (Optional)
-  // 3Ch 3Fh CMBSZ Controller Memory Buffer Size (Optional)
-  // 40h 43h BPINFO Boot Partition Information (Optional)
-  // 44h 47h BPRSEL Boot Partition Read Select (Optional)
-  // 48h 4Fh BPMBL Boot Partition Memory Buffer Location (Optional)
-  // 50h 57h CMBMSC Controller Memory Buffer Memory Space Control (Optional)
-  // 58h 5Bh CMBSTS Controller Memory Buffer Status (Optional)
-  // 5Ch DFFh Reserved Reserved
-  // E00h E03h PMRCAP Persistent Memory Capabilities (Optional)
-  // E04h E07h PMRCTL Persistent Memory Region Control (Optional)
-  // E08h E0Bh PMRSTS Persistent Memory Region Status (Optional)
-  // E0Ch E0Fh PMREBS Persistent Memory Region Elasticity Buffer Size
-  // E10h E13h PMRSWTP Persistent Memory Region Sustained Write Throughput
-  // E14h E1Bh PMRMSC Persistent Memory Region Controller Memory Space Control (Optional)
-  // E1Ch FFFh Reserved Command Set Specific
-  // 1000h 1003h SQ0TDBL Submission Queue 0 Tail Doorbell (Admin)
-  // 1000h + (1 * (4 << CAP.DSTRD))
-  // 1003h + (1 * (4 << CAP.DSTRD)) CQ0HDBL Completion Queue 0 Head Doorbell (Admin)
-
-  toJSON() {
-    return {
-      MQES: this.MQES,
-    };
-  }
 };
