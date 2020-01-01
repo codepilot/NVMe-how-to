@@ -21,7 +21,7 @@ const regs = {
   PMRSTS: {start: 0x0E08n, end: 0x0E0Bn, desc: 'Persistent Memory Region Status (Optional)'},
   PMREBS: {start: 0x0E0Cn, end: 0x0E0Fn, desc: 'Persistent Memory Region Elasticity Buffer Size'},
   PMRSWT: {start: 0x0E10n, end: 0x0E13n, desc: 'Persistent Memory Region Sustained Write Throughput'},
-  PMRMSC: {start: 0x0E14n, end: 0x0E1Bn, desc: 'Persistent Memory Region Controller Memory Space Control (Optional)'},
+//PMRMSC: {start: 0x0E14n, end: 0x0E1Bn, desc: 'Persistent Memory Region Controller Memory Space Control (Optional)'},
 };
 
 const RO = Symbol('Readonly');
